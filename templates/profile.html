@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <form method="POST" action="{{ url_for('profile') }}" id="profileForm" class="verticalcenter">
+        <img src="/static/anitracker.png" alt="logo" id="home_page_image"><br>
+        <h1 id="header">User: {{username}}</h1>
+        <input type="submit" name="action" value="🔎︎ Search" class="search_button" id="homepagebutton"/><input type="submit" name="action" value="Sign out" class="button" id="homepagebutton"/>
+        <h1 id="header">Welcome to the profile page</h1>
+        <h2 id="header">Change username or password</h2>
+        <h3 class="error" id="header">{{ message }}</h3>
+        <label for="current_password" id="passwordlabel">Current Password: </label>
+        <input type="password" name="current_password" placeholder="Input current password..." class="profile_inputs"><br>
+        <label for="new_detail" id="passwordlabel" class="detail_label">New Detail: </label>
+        <input type="text" name="new_detail" placeholder="Input new username or password..." class="profile_inputs"><br>
+        <input type="submit" name="action" value="Change Username" class="button"/><input type="submit" name="action" value="Change Password" class="button"/><br>
+        <h3 id="header">Delete account</h3>
+        <input type="submit" name="action" value="Delete account" class="button"/>
+    </form>
+
+    <script>
+        // Used to cancel form submission if the user tries to press enter. 
+        //This is used so no unexpected scenarios occur.
+        document.getElementById('profileForm').addEventListener('submit', function(event) {
+            trigger = document.activeElement;
+            if (!trigger || trigger.tagName !== 'INPUT' || trigger.getAttribute('type') !== 'submit') {
+                event.preventDefault(); 
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <form method="POST" action="{{ url_for('anime_info') }}" class="verticalcenter">
+        <img src="/static/anitracker.png" alt="logo" id="home_page_image"><br>
+        <h1 id="header">User: {{username}}</h1><input type="submit" name="action" value="🔎︎ Search" class="search_button" id="resultsbutton"/><input type="submit" name="action" value="Profile" class="button" id="resultsbutton" /><input type="submit" name="action" value="Sign out" class="button" id="resultsbutton"/>
+        <h1 id="header">{{ title }}</h1>
+        <h3 id="header">Average Score: {{ average }}</h3>
+        <h4>
+            Your Score:
+            <select name="new_score" class="select">
+                <option value="N/A">N/A</option>
+                {% for num in range(1,11) %}
+                {% if(score==num) %}
+                <option value="{{ num }}" selected="selected">{{ num }}</option>
+                {% endif %}
+                {% if(score!=num) %}
+                <option value="{{ num }}">{{ num }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </h4>
+        <br>
+        <input type="submit" name="action" value="Save" class="button" id="resultsbutton" />
+        <br>
+        <br>
+        <p>{{ synopsis }}</p>
+    </form>
+</body>
+
+</html>

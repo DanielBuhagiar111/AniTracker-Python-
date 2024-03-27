@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <form method="POST" action="{{ url_for('results') }}" class="verticalcenter">
+        <img src="/static/anitracker.png" alt="logo" id="home_page_image"><br>
+        <h1 id="header">User: {{username}}</h1><input type="submit" name="action" value="🔎︎ Search" class="search_button" id="resultsbutton"/><input type="submit" name="action" value="Profile" class="button" id="resultsbutton" /><input type="submit" name="action" value="Sign out" class="button" id="resultsbutton"/>
+        <h1 id="header">Search Results for {{ search }}</h1>
+        <ul>
+            {% for result in results %}
+            <input type="submit" name="action" value="{{ result }}" class="button" id="homepagebutton"/><br><br>
+            {% endfor %}
+        </ul>
+        <h3>{{ error }}</h3>
+    </form>
+</body>
+
+</html>

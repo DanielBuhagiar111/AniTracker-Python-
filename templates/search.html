@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <form method="POST" action="{{ url_for('search') }}" id="searchForm" class="verticalcenter">
+        <img src="/static/anitracker.png" alt="logo" id="home_page_image"><br>
+        <h1 id="header">User: {{username}}</h1>
+        <input type="submit" name="action" value="Profile" class="button" id="homepagebutton"/><input type="submit" name="action" value="Sign out" class="button" id="homepagebutton"/>
+        <h1 id="header">Welcome to the search page!!!</h1>
+        <input type="text" name="search" placeholder="Search Anime by title or synopsis...." class="input" id="search_input">
+        <br>
+        <input type="submit" name="action" value="🔎︎ Search:" class="search_button" id="homepagebutton"/>
+        <br>
+        <br>
+        <div id="instructions">
+            Welcome to my anime search engine the following indicate how it works: <br>
+            1. First once logged in go on the input which has the search icon button next to it. <br>
+            2. Then in this input field type the anime title or synopsis of the anime you wish to view. <br>
+            3. Dont worry if you cant remember it exactly the search will still work. <br>
+            Note: Avoid using words like 'and', 'after' and 'a' as they will be ignored.<br>
+            4. When your done press the search button and you will be taken to a new page, <br>
+            in this page the 3 most similar animes to your search will be outputted. <br>
+            5. Then click on the anime you wanted and you will be taken to its corresponding page. <br>
+            6. On the corresponding page you can see the anime title and synopsis, the average <br>
+            score given by all the users and if already inputted your score. <br>
+            7. If you have not entered your score yet you can input it in the input field. <br>
+            8. When you are done from viewing this page you can either sign out or go back to the <br>
+            search page to search for another anime. <b>Make sure to log out or youll stay logged in!</b><br>
+        </div>
+    </form>
+
+    <script>
+        // Used to cancel form submission if the user tries to press enter. 
+        //This is used so no unexpected scenarios occur.
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            trigger = document.activeElement;
+            if (!trigger || trigger.tagName !== 'INPUT' || trigger.getAttribute('type') !== 'submit') {
+                event.preventDefault(); 
+            }
+        });
+    </script>
+</body>
+</html>
